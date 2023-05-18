@@ -17,15 +17,17 @@
     </style>
 <body>
     <h1>Cubic Equation Solver</h1>
-    <p>Solve any function of the form <span class="mono">y = ax^3 + bx^2 + cx + d</span> given 4 points, using simultaneous equations which are solved with Gaussian Elimination.</p>
+    <p>Solve any function of the form <span class="mono">y = ax^3 + bx^2 + cx + d</span> given 4 points, using simultaneous equations which are solved with Gaussian Elimination. Due to floating point error, digits in small decimal places can be inaccurate, as seen when inputting the example data for <span class="mono">y=x^2+3</span>. To mitigate this, enable the rounding option if high accuracy is not required.</p>
     <p>
         Example data inputs:
         <div class="mono">
             y=x: (1,1),(-2,-2),(3,3),(-7,-7)
             <br>
-            y=x^2: (-1,1),(2,4),(-3,9),(4,16)
+            y=x^2+3: (-1,4),(2,7),(-3,12),(4,19)
             <br>
-            y=x^3: (-0.5,-0.125),(1,1),(-3,-27),(2,8)
+            y=x^3-x: (0,0),(1,0),(-1,-2),(2,4)
+            <br>
+            y=x^3+x^2+x+1: (0,1),(-1,0),(1,4),(-2,-5)
         </div>
     </p>
     <section>
@@ -34,6 +36,10 @@
         <br>
         <input id="pointsInput" type="text" placeholder="(x1,y1),(x2,y2),(x3,y3),(x4,y4)">
         <button id="solveButton">Solve</button>
+        <div>
+            <input type="checkbox" id="doRounding">
+            Round final equation to 3 significant figures 
+        </div>
     </section>
     <section>
         <h2>Output</h2>

@@ -94,12 +94,16 @@ function solve(input){
     /*
     Obtain cubic equation
     */
-
-    const cubicEquation = `y = ${a}*x^3 + ${b}*x^2 + ${c}*x + ${d}`;
+    const cubicEquation = doRounding.checked ? `y = ${round(a.toPrecision(3))}*x^3 + ${round(b.toPrecision(3))}*x^2 + ${round(c.toPrecision(3))}*x + ${round(d.toPrecision(3))}` : `y = ${a}*x^3 + ${b}*x^2 + ${c}*x + ${d}`;
     display('<b>Cubic Equation: </b>', cubicEquation);
 }
 
 function display(label, data){
     console.log(label, data);
     outputDiv.innerHTML += `${label}<br>${data}<br><br>`;
+}
+
+function round(number){
+    if (number <= 1e-7) return 0;
+    return parseFloat(number).toLocaleString('fullwide', { useGrouping: false, maximumSignificantDigits:3 });
 }
